@@ -18,5 +18,17 @@ class HomeController extends AbstractController
         ]);
     }
 
+
+    // A VOIR SI ON GARDE ÇA OU PAS !!!!!
+    /**
+     * @Route("/profil", name="profil")
+     */
+    public function profil()
+    {
+        return $this->render('home/profil.html.twig', [
+            'controller_name' => 'HomeController',
+            'title' => 'Votre profil'
+        ]);
+    }
     
 }
