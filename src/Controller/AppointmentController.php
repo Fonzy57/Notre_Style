@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/appointment")
+ * @Route("/rdv")
  */
 class AppointmentController extends AbstractController
 {
@@ -26,7 +26,7 @@ class AppointmentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="appointment_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="appointment_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {

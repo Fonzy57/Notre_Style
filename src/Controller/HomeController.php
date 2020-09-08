@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class HomeController extends AbstractController
 {
@@ -18,16 +19,14 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-    // A VOIR SI ON GARDE ÇA OU PAS !!!!!
     /**
      * @Route("/profil", name="profil")
      */
-    public function profil()
+    public function profil(UserInterface $user)
     {
         return $this->render('home/profil.html.twig', [
             'controller_name' => 'HomeController',
-            'title' => 'Votre profil'
+            'user' => $user
         ]);
     }
     

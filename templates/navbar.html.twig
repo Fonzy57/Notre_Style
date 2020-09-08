@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('home') }}">Notre Style</a>
         {# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -10,31 +10,35 @@
                 <a class="nav-link" href="{{ path('home') }}">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Prendre un RDV</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Ajouter un service</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Nos tarifs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Nous contacter</a>
             </li>
-            {# <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </li> #}
+            {% if app.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('appointment_index') }}">Voir les Rendez-vous</a>
+            </li>
+            {% endif %}
+            
         </ul>
-        {# <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form> #}
+        {% if not app.user %}
+            <a href="{{ path('app_login') }}" class="btn btn-info">Se Connecter</a>
+        {% else %}
+            <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Prendre un rendez-vous</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="dropdown">
+                    <a class="btn btn-info dropdown-toggle my-2 my-sm-0 mr-sm-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ajouter
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{ path('inscription') }}">Un Client</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Un Service</a>
+                    </div>
+                </div>
+            {% endif %}
+            <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
+        {% endif %}
     </div>
 </nav>

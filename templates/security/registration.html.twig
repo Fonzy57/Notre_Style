@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+    <h1>Ajouter un client</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.lastName, {'label': 'Nom du client','attr': {'placeholder': 'Dupont'}}) }}
+        {{ form_row(form.firstName, {'label': 'Prénom du client','attr': {'placeholder': 'Jean'}}) }}
+        {{ form_row(form.email, {'label': 'Email','attr': {'placeholder': 'dupont.jean@notre-style.fr'}}) }}
+        {{ form_row(form.phone, {'label': 'Téléphone','attr': {'placeholder': '0601020304'}}) }}
+        {{ form_row(form.password, {'label': 'Mot de passe','attr': {'placeholder': '**********'}}) }}
+        {{ form_row(form.confirmPassword, {'label': 'Confirmation du mot de passe','attr': {'placeholder': '**********'}}) }}
+        {{ form_row(form.createdBy, {'label': 'Client ajouté par :'}) }}
+        {{ form_row(form.roles, {'label': 'Role'}) }}
+
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}

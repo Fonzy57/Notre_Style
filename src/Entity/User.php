@@ -2,15 +2,29 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *  fields={"email"},
+ *  message="L'email indiqué est déjà utilisé !"
+ * )
  */
 class User implements UserInterface
 {
+
+    //AJOUT DE COIFFEUSE POUR LES CREATEDBY ET UPDATEDBY POUR L'INSCRIPTION
+
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+    const ROLE_USER = 'ROLE_USER';
+    const DEFAULT_ROLES = [self::ROLE_USER];
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -20,32 +34,62 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
      */
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="simple_array")
+     * @Assert\NotBlank
+     * si ça ne fonctionne pas revenir au tableau json, json_array
      */
     private $roles = [];
+
+    public function __construct()
+    {
+        $this->roles = self::DEFAULT_ROLES;
+    }
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *          min = 8,
+     *          minMessage = "Le mot de passe doit contenir au moins 8 caractères"
+     * )
      */
     private $password;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\EqualTo(
+     *  propertyPath="password",
+     *  message="Vous n'avez pas tapé le même mot de passe !"
+     * )
+     * Juste pour avoir un champ de confirmation du mot de passe
+     */
+    private $confirmPassword;
+
+    /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min = 10,
+     *  max = 10,
+     *  exactMessage="Le numéro de téléphone doit contenir 10 chiffres, sans espace"
+     * )
      */
     private $phone;
 
@@ -68,6 +112,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $updatedBy;
+
+    /* public function __toString()
+    {
+        return (string) $this->roles;
+    } */
 
     public function getId(): ?int
     {
@@ -103,7 +152,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -227,6 +276,26 @@ class User implements UserInterface
     public function setUpdatedBy(string $updatedBy): self
     {
         $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of confirmPassword
+     */ 
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
+    }
+
+    /**
+     * Set the value of confirmPassword
+     *
+     * @return  self
+     */ 
+    public function setConfirmPassword($confirmPassword)
+    {
+        $this->confirmPassword = $confirmPassword;
 
         return $this;
     }

@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}Profil de {{ user.firstName }} {{ user.lastName }}{% endblock %}
 
 {% block body %}
 
-    <h1>Profil du client</h1>
+    <h1>Hello {{ user.lastName }} {{ user.firstName }}</h1>
+
+    <p>Vous avez un {{ user.roles[0] }}</p>
 
 {% endblock %}

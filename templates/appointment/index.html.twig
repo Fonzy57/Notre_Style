@@ -16,24 +16,28 @@
                 <th>CreatedBy</th>
                 <th>UpdatedAt</th>
                 <th>UpdatedBy</th>
-                <th>actions</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
         {% for appointment in appointments %}
             <tr>
                 <td>{{ appointment.id }}</td>
-                <td>{{ appointment.beginAt ? appointment.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appointment.beginAt ? appointment.beginAt|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ appointment.endAt ? appointment.endAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ appointment.denomination }}</td>
                 <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ appointment.createdBy }}</td>
                 <td>{{ appointment.updatedAt ? appointment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ appointment.updatedBy }}</td>
-                <td>
-                    <a href="{{ path('appointment_show', {'id': appointment.id}) }}">Voir</a>
-                    <a href="{{ path('appointment_edit', {'id': appointment.id}) }}">Modifier</a>
-                </td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>
+                        <a href="{{ path('appointment_show', {'id': appointment.id}) }}">Voir</a>
+                        <a href="{{ path('appointment_edit', {'id': appointment.id}) }}">Modifier</a>
+                    </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -42,6 +46,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-success" href="{{ path('appointment_new') }}">Create new</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-success" href="{{ path('appointment_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
