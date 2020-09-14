@@ -14,7 +14,6 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
             'title' => 'Notre Style'
         ]);
     }
@@ -25,7 +24,6 @@ class HomeController extends AbstractController
     public function profil(UserInterface $user)
     {
         return $this->render('home/profil.html.twig', [
-            'controller_name' => 'HomeController',
             'user' => $user
         ]);
     }

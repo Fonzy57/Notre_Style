@@ -52,6 +52,11 @@ class Appointment
      */
     private $updatedBy;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $hairdresser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +142,18 @@ class Appointment
     public function setUpdatedBy(string $updatedBy): self
     {
         $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    public function getHairdresser(): ?string
+    {
+        return $this->hairdresser;
+    }
+
+    public function setHairdresser(string $hairdresser): self
+    {
+        $this->hairdresser = $hairdresser;
 
         return $this;
     }

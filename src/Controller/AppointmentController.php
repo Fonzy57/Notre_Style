@@ -26,32 +26,32 @@ class AppointmentController extends AbstractController
     }
 
     /**
-     * @Route("/nouveau", name="appointment_new", methods={"GET","POST"})
+     * @Route("/new", name="appointment_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $appointment = new Appointment();
-        //Réglage de la date du formulaire pour être à la date du jour
-        $appointment->setBeginAt(new \Datetime());
+
+        //Réglage de la date du formulaire pour être à la date du jour 
+        $appointment->setBeginAt(new \DateTime());
         $appointment->setEndAt(new \DateTime());
 
         $form = $this->createForm(AppointmentType::class, $appointment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            //réglages des 4 champs obligatoires en dessous de cette ligne
-            $appointment->setCreatedAt(new \DateTime());
-            $appointment->setCreatedBy('Aude');
-            $appointment->setUpdatedAt(new \DateTime());
-            $appointment->setUpdatedBy('Aude');
-            //fin des réglages
-
+            
+            //Réglages des 4 champs obligatoire:
+            $appointment->setCreatedAt(new \DateTime())
+                        ->setCreatedBy('Notre Style')
+                        ->setUpdatedAt(new \DateTime())
+                        ->setUpdatedBy('Notre Style');
+            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($appointment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('appointment_index');
+            return $this->redirectToRoute('profil');
         }
 
         return $this->render('appointment/new.html.twig', [

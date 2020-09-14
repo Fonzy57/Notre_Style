@@ -17,13 +17,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface
 {
-
-    //AJOUT DE COIFFEUSE POUR LES CREATEDBY ET UPDATEDBY POUR L'INSCRIPTION
-
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_USER = 'ROLE_USER';
     const DEFAULT_ROLES = [self::ROLE_USER];
-
 
     /**
      * @ORM\Id
@@ -88,7 +84,7 @@ class User implements UserInterface
      * @Assert\NotBlank
      * @Assert\Length(min = 10,
      *  max = 10,
-     *  exactMessage="Le numéro de téléphone doit contenir 10 chiffres, sans espace"
+     *  exactMessage="Le numéro de téléphone doit contenir 10 chiffres, sans espaces"
      * )
      */
     private $phone;

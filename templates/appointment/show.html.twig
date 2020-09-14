@@ -23,7 +23,7 @@
                 <th>Denomination</th>
                 <td>{{ appointment.denomination }}</td>
             </tr>
-            {# <tr>
+            <tr>
                 <th>CreatedAt</th>
                 <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
@@ -38,7 +38,11 @@
             <tr>
                 <th>UpdatedBy</th>
                 <td>{{ appointment.updatedBy }}</td>
-            </tr> #}
+            </tr>
+            <tr>
+                <th>Hairdresser</th>
+                <td>{{ appointment.hairdresser }}</td>
+            </tr>
         </tbody>
     </table>
 

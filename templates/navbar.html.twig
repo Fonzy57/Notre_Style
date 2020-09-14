@@ -1,8 +1,8 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('home') }}">Notre Style</a>
-        {# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> #}
+        </button>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
@@ -10,14 +10,16 @@
                 <a class="nav-link" href="{{ path('home') }}">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Nos tarifs</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Nous contacter</a>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('appointment_index') }}">Voir les Rendez-vous</a>
+                </li>
+            {% endif %}
             {% if app.user %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('appointment_index') }}">Voir les Rendez-vous</a>
+                <a class="nav-link" href="{{ path('profil') }}">Votre Profil</a>
             </li>
             {% endif %}
             

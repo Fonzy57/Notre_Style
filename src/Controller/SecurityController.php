@@ -72,6 +72,4 @@ class SecurityController extends AbstractController
             'title' => 'Inscription'
         ]);
     }
-
-
 }

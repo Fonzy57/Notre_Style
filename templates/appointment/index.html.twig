@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Rendez-vous{% endblock %}
+{% block title %}Appointment index{% endblock %}
 
 {% block body %}
-    <h1>Les rendez-vous</h1>
+    <h1>Les rendez-vous de la journée</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>BeginAt</th>
-                <th>EndAt</th>
-                <th>Denomination</th>
-                <th>CreatedAt</th>
+                {# <th>Id</th> #}
+                <th>Heure</th>
+                {# <th>EndAt</th> #}
+                <th>Coupe</th>
+                {# <th>CreatedAt</th>
                 <th>CreatedBy</th>
                 <th>UpdatedAt</th>
-                <th>UpdatedBy</th>
+                <th>UpdatedBy</th> #}
+                <th>Coiffeuse</th>
                 {% if is_granted('ROLE_ADMIN') %}
                     <th>actions</th>
                 {% endif %}
@@ -24,14 +25,15 @@
         <tbody>
         {% for appointment in appointments %}
             <tr>
-                <td>{{ appointment.id }}</td>
-                <td>{{ appointment.beginAt ? appointment.beginAt|date('d-m-Y H:i:s') : '' }}</td>
-                <td>{{ appointment.endAt ? appointment.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# <td>{{ appointment.id }}</td> #}
+                <td>{{ appointment.beginAt ? appointment.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# <td>{{ appointment.endAt ? appointment.endAt|date('Y-m-d H:i:s') : '' }}</td> #}
                 <td>{{ appointment.denomination }}</td>
-                <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ appointment.createdBy }}</td>
                 <td>{{ appointment.updatedAt ? appointment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ appointment.updatedBy }}</td>
+                <td>{{ appointment.updatedBy }}</td> #}
+                <td>{{ appointment.hairdresser }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
                     <td>
                         <a href="{{ path('appointment_show', {'id': appointment.id}) }}">Voir</a>
@@ -41,12 +43,12 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="10">Aucun rendez-vous d'enregistrer</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-success" href="{{ path('appointment_new') }}">Create new</a>
+        <a class="btn btn-success" href="{{ path('appointment_new') }}">Enregistrer un RDV</a>
     {% endif %}
 {% endblock %}
