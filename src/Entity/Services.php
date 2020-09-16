@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\AppointmentRepository;
+use App\Repository\ServicesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AppointmentRepository::class)
+ * @ORM\Entity(repositoryClass=ServicesRepository::class)
  */
-class Appointment
+class Services
 {
     /**
      * @ORM\Id
@@ -18,14 +20,14 @@ class Appointment
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
-    private $beginAt;
+    private $denomination;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
-    private $endAt;
+    private $duration;
 
     /**
      * @ORM\Column(type="datetime")
@@ -48,47 +50,40 @@ class Appointment
     private $updatedBy;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="services")
      */
-    private $hairdresser;
+    private $appointment;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="appointment")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Services::class, inversedBy="appointment")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $services;
+    public function __construct()
+    {
+        $this->appointment = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getBeginAt(): ?\DateTimeInterface
+    public function getDenomination(): ?string
     {
-        return $this->beginAt;
+        return $this->denomination;
     }
 
-    public function setBeginAt(\DateTimeInterface $beginAt): self
+    public function setDenomination(string $denomination): self
     {
-        $this->beginAt = $beginAt;
+        $this->denomination = $denomination;
 
         return $this;
     }
 
-    public function getEndAt(): ?\DateTimeInterface
+    public function getDuration(): ?string       //\DateTimeInterface
     {
-        return $this->endAt;
+        return $this->duration;
     }
 
-    public function setEndAt(\DateTimeInterface $endAt): self
+    public function setDuration(string $duration): self
     {
-        $this->endAt = $endAt;
+        $this->duration = $duration;
 
         return $this;
     }
@@ -141,38 +136,33 @@ class Appointment
         return $this;
     }
 
-    public function getHairdresser(): ?string
+    /**
+     * @return Collection|Appointment[]
+     */
+    public function getAppointment(): Collection
     {
-        return $this->hairdresser;
+        return $this->appointment;
     }
 
-    public function setHairdresser(string $hairdresser): self
+    public function addAppointment(Appointment $appointment): self
     {
-        $this->hairdresser = $hairdresser;
+        if (!$this->appointment->contains($appointment)) {
+            $this->appointment[] = $appointment;
+            $appointment->setServices($this);
+        }
 
         return $this;
     }
 
-    public function getUser(): ?User
+    public function removeAppointment(Appointment $appointment): self
     {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getServices(): ?Services
-    {
-        return $this->services;
-    }
-
-    public function setServices(?Services $services): self
-    {
-        $this->services = $services;
+        if ($this->appointment->contains($appointment)) {
+            $this->appointment->removeElement($appointment);
+            // set the owning side to null (unless already changed)
+            if ($appointment->getServices() === $this) {
+                $appointment->setServices(null);
+            }
+        }
 
         return $this;
     }

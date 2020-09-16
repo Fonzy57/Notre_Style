@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Appointment index{% endblock %}
+{% block title %}Voir les rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Les rendez-vous de la journée</h1>
+    <h1>Voir les rendez-vous</h1>
 
     <table class="table">
         <thead>
             <tr>
                 {# <th>Id</th> #}
                 <th>Heure</th>
-                {# <th>EndAt</th> #}
-                <th>Coupe</th>
-                {# <th>CreatedAt</th>
+                {# <th>EndAt</th>
+                <th>CreatedAt</th>
                 <th>CreatedBy</th>
                 <th>UpdatedAt</th>
                 <th>UpdatedBy</th> #}
+                <th>Client</th>
+                <th>Coupe</th>
                 <th>Coiffeuse</th>
                 {% if is_granted('ROLE_ADMIN') %}
                     <th>actions</th>
@@ -27,12 +28,13 @@
             <tr>
                 {# <td>{{ appointment.id }}</td> #}
                 <td>{{ appointment.beginAt ? appointment.beginAt|date('Y-m-d H:i:s') : '' }}</td>
-                {# <td>{{ appointment.endAt ? appointment.endAt|date('Y-m-d H:i:s') : '' }}</td> #}
-                <td>{{ appointment.denomination }}</td>
-                {# <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# <td>{{ appointment.endAt ? appointment.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ appointment.createdBy }}</td>
                 <td>{{ appointment.updatedAt ? appointment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ appointment.updatedBy }}</td> #}
+                <td>{{ appointment.user.lastname ~ ' ' ~ appointment.user.firstname }}</td>
+                <td>{{ appointment.services.denomination }}</td>
                 <td>{{ appointment.hairdresser }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
                     <td>
@@ -43,7 +45,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">Aucun rendez-vous d'enregistrer</td>
+                <td colspan="9">Aucun rendez-vous d'enregistrés</td>
             </tr>
         {% endfor %}
         </tbody>

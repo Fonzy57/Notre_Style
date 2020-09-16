@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services index{% endblock %}
+
+{% block body %}
+    <h1>Services index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Denomination</th>
+                <th>Duration</th>
+                <th>CreatedAt</th>
+                <th>CreatedBy</th>
+                <th>UpdatedAt</th>
+                <th>UpdatedBy</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.id }}</td>
+                <td>{{ service.denomination }}</td>
+                <td>{{ service.duration ? service.duration|date('H:i:s') : '' }}</td>
+                <td>{{ service.createdAt ? service.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ service.createdBy }}</td>
+                <td>{{ service.updatedAt ? service.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ service.updatedBy }}</td>
+                <td>
+                    <a href="{{ path('services_show', {'id': service.id}) }}">show</a>
+                    <a href="{{ path('services_edit', {'id': service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('services_new') }}">Create new</a>
+{% endblock %}

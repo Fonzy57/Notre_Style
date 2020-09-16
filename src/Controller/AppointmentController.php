@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use DateInterval;
+use App\Entity\Services;
 use App\Entity\Appointment;
 use App\Form\AppointmentType;
 use App\Repository\AppointmentRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/rdv")
@@ -26,32 +29,39 @@ class AppointmentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="appointment_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="appointment_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user, Services $service = null): Response
     {
         $appointment = new Appointment();
-
+        
         //Réglage de la date du formulaire pour être à la date du jour 
         $appointment->setBeginAt(new \DateTime());
-        $appointment->setEndAt(new \DateTime());
+
+        //Il faut que le user soit celui connecté et quand role Admin avoir la liste des clients
 
         $form = $this->createForm(AppointmentType::class, $appointment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
+            $start = $appointment->getBeginAt();
+            $duration = $appointment->getServices()->getDuration();
+            $end = $start->add(new DateInterval('PT'.$duration.'M'));
+
             //Réglages des 4 champs obligatoire:
             $appointment->setCreatedAt(new \DateTime())
-                        ->setCreatedBy('Notre Style')
+                        ->setCreatedBy($user->getLastName())
                         ->setUpdatedAt(new \DateTime())
-                        ->setUpdatedBy('Notre Style');
-            
-            $entityManager = $this->getDoctrine()->getManager();
+                        ->setUpdatedBy($user->getLastName());
+                        //->setEndAt($end);
+            dump($start, $end, $appointment);
+
+            /* $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($appointment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('profil');
+            return $this->redirectToRoute('profil'); */
         }
 
         return $this->render('appointment/new.html.twig', [

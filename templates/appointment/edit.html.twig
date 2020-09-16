@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Appointment{% endblock %}
+{% block title %}Modification rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Edit Appointment</h1>
+    <h1>Modifier un rendez-vous</h1>
 
     {{ include('appointment/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('appointment_index') }}">back to list</a>
+    <a href="{{ path('appointment_index') }}">Retour à la liste</a>
 
     {{ include('appointment/_delete_form.html.twig') }}
 {% endblock %}

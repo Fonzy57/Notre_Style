@@ -2,14 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\User;
+use App\Entity\Services;
 use App\Entity\Appointment;
-use DateTimeImmutable;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\FormTypeInterface;
 
 class AppointmentType extends AbstractType
 {
@@ -22,12 +23,6 @@ class AppointmentType extends AbstractType
                 'hours' => range(9, 17),
                 'minutes' => [00, 15, 30, 45],
             ])
-            ->add('endAt', DateTimeType::class, [
-                'date_widget' => 'single_text',
-                'hours' => range(9, 18),
-                'minutes' => [00, 15, 30, 45],
-            ])
-            ->add('denomination')
             ->add('hairdresser', ChoiceType::class, [
                 'label' => 'Coiffeuse',
                 'choices' => [
@@ -35,10 +30,16 @@ class AppointmentType extends AbstractType
                     'Emilie' => 'Emilie'
                 ]
             ])
-            /* ->add('createdAt')
-            ->add('createdBy')
-            ->add('updatedAt')
-            ->add('updatedBy') */
+            ->add('user', EntityType::class, [
+                'label' => 'Client',
+                'class' => User::class,
+                'choice_label' => 'lastname'
+            ])
+            ->add('services', EntityType::class, [
+                'label' => 'Service',
+                'class' => Services::class,
+                'choice_label' => 'denomination'
+            ])
         ;
     }
 

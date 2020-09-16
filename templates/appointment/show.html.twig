@@ -7,36 +7,40 @@
 
     <table class="table">
         <tbody>
-            <tr>
+            {# <tr>
                 <th>Id</th>
                 <td>{{ appointment.id }}</td>
+            </tr> #}
+            <tr>
+                <th>Heure de RDV</th>
+                <td>{{ appointment.beginAt ? appointment.beginAt|date('d-m-Y H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>BeginAt</th>
-                <td>{{ appointment.beginAt ? appointment.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Nom</th>
+                <td>{{ appointment.user.lastname ? appointment.user.lastname : '' }}</td>
             </tr>
             <tr>
-                <th>EndAt</th>
-                <td>{{ appointment.endAt ? appointment.endAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Prénom</th>
+                <td>{{ appointment.user.firstname ? appointment.user.firstname : '' }}</td>
             </tr>
             <tr>
-                <th>Denomination</th>
-                <td>{{ appointment.denomination }}</td>
+                <th>Téléphone</th>
+                <td>{{ appointment.user.phone ? appointment.user.phone : '' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ appointment.createdAt ? appointment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Créé le </th>
+                <td>{{ appointment.createdAt ? appointment.createdAt|date('d-m-Y H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>CreatedBy</th>
+                <th>Créé par</th>
                 <td>{{ appointment.createdBy }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
-                <td>{{ appointment.updatedAt ? appointment.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Modifié le</th>
+                <td>{{ appointment.updatedAt ? appointment.updatedAt|date('d-m-Y H:i') : '' }}</td>
             </tr>
             <tr>
-                <th>UpdatedBy</th>
+                <th>Modifié par</th>
                 <td>{{ appointment.updatedBy }}</td>
             </tr>
             <tr>
@@ -46,9 +50,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('appointment_index') }}">back to list</a>
+    <a href="{{ path('appointment_index') }}">Retour à la liste des RDV</a>
 
-    <a href="{{ path('appointment_edit', {'id': appointment.id}) }}">edit</a>
+    <a href="{{ path('appointment_edit', {'id': appointment.id}) }}">Modifier le RDV</a>
 
     {{ include('appointment/_delete_form.html.twig') }}
 {% endblock %}

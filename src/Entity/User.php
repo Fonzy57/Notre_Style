@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -44,6 +46,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = self::DEFAULT_ROLES;
+        $this->appointment = new ArrayCollection();
     }
 
     /**
@@ -108,6 +111,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $updatedBy;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Appointment::class, mappedBy="user")
+     */
+    private $appointment;
 
     /* public function __toString()
     {
@@ -292,6 +300,37 @@ class User implements UserInterface
     public function setConfirmPassword($confirmPassword)
     {
         $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Appointment[]
+     */
+    public function getAppointment(): Collection
+    {
+        return $this->appointment;
+    }
+
+    public function addAppointment(Appointment $appointment): self
+    {
+        if (!$this->appointment->contains($appointment)) {
+            $this->appointment[] = $appointment;
+            $appointment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAppointment(Appointment $appointment): self
+    {
+        if ($this->appointment->contains($appointment)) {
+            $this->appointment->removeElement($appointment);
+            // set the owning side to null (unless already changed)
+            if ($appointment->getUser() === $this) {
+                $appointment->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -7,8 +7,5 @@
 
     {{ include('appointment/_form.html.twig') }}
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('appointment_index') }}">Revenir à la liste</a>
-    {% endif %}
-    
+    <a href="{{ path('appointment_index') }}">Revenir à la liste</a>
 {% endblock %}
