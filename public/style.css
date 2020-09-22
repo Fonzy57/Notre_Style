@@ -1,3 +1,240 @@
-body {
-    padding-top: 125px;
+.btn-gold {
+    background-color: hsl(42, 75%, 60%);
+    font-weight: bold;
+    color: black;
+}
+
+/*CSS NAVBAR*/
+.navbar-dark .navbar-brand {
+    color: hsl(42, 75%, 60%);
+    font-size: x-large;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    font-size: larger;
+}
+/*FIN CSS NAVBAR*/
+
+/*DEBUT CSS FOOTER*/
+.footer {
+    width: 100%;
+    height: 150px;
+    background-color: hsl(210, 10%, 23%);
+}
+
+.footer-menu {
+    text-align: center;
+}
+
+.footer-menu ul {
+    list-style: none;
+}
+
+.footer-menu ul li {
+    display: inline-block;
+}
+
+.footer-menu ul li a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+/*FIN CSS FOOTER*/
+
+/*CSS BANNER PHOTO D'ACCUEIL*/
+.banner {
+    width: 100%;
+    height: 950px;
+    background-size: cover;
+    padding-bottom: 100px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/photos/salon_40.jpg");
+}
+
+.header-banner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    height: 850px;
+}
+
+.header-banner h1 {
+    color: white;
+    padding-top: 35%;
+    font-size: 80px;
+}
+
+.header-banner p {
+    color: white;
+    font-size: 32px;
+}
+/*FIN CSS BANNER*/
+
+/*DEBUT CSS EQUIPE*/
+.team {
+    background-color: hsl(210, 10%, 23%);
+    padding-bottom: 50px;
+}
+
+.team-title {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.team-title h2 {
+    color: white;
+    font-size: 65px;
+}
+
+.team-box {
+    border: 0.1px solid hsl(42, 75%, 60%);
+    margin-bottom: 50px;
+}
+
+.team-box figure {
+    text-align: center;
+    padding: 20px 20px 0 20px;
+}
+
+.team-box .team-info {
+    padding: 30px;
+    text-align: center;
+}
+
+.team-box .team-info p {
+    font-size: 20px;
+    color: hsl(42, 75%, 60%);
+}
+
+.team-box .team-info h3 {
+    font-size: 30px;
+    color: white;
+}
+/*FIN CSS TEAM*/
+
+/*DEBUT CSS HORAIRE*/
+.time {
+    padding-bottom: 70px;
+}
+
+.time-title {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: black;
+}
+
+.time-title h2 {
+    font-size: 65px;
+}
+
+.time-general {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.time-box {
+    text-align: center;
+    align-items: center;
+    background-color: hsl(42, 75%, 60%);
+    padding: 30px 0;
+}
+
+.time-box p {
+    color: black;
+}
+/*FIN CSS HORAIRE*/
+
+/*DEBUT CSS CREATION*/
+.work {
+    background-color: hsl(210, 10%, 23%);
+    padding-bottom: 70px;
+}
+
+.work-title {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.work-title h2 {
+    color: white;
+    font-size: 65px;
+}
+/*FIN CSS CREATION*/
+
+/*DEBUT CSS PRESTATION*/
+.price {
+    padding-bottom: 70px;
+}
+
+.price-title {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: black;
+}
+
+.price-title h2 {
+    font-size: 65px;
+}
+
+.price-image {
+    padding: 20px;
+    border: 0.1px solid hsl(42, 75%, 60%);
+    text-align: center;
+}
+
+.price-list {
+    max-width: 420px;
+    margin: 0 auto 30px;
+    padding: 20px;
+}
+
+.price-item {
+    font-size: 30px;
+    display: table-cell;
+    white-space: nowrap;
+    padding-right: 4px;
+}
+
+.price-amount {
+    text-align: right;
+    display: table-cell;
+    font-size: 30px;
+    white-space: nowrap;
+    padding-left: 4px;
+}
+/*FIN CSS PRESTATION*/
+
+/*DEBUT CSS CARTE*/
+.map {
+    background-color: hsl(210, 10%, 23%);
+}
+
+.map-title {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+.map-title h2 {
+    color: white;
+    font-size: 65px;
+}
+/*FIN CSS CARTE*/
+
+/*DEBUT CSS LOGIN*/
+.login {
+    margin-top: 125px;
+}
+
+.login h1 {
+    text-align: center;
+    font-size: 50px;
 }

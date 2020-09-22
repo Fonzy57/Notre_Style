@@ -26,8 +26,9 @@ class RegistrationType extends AbstractType
                 'entry_options' => [
                     'label' => false,
                     'choices' => [
-                        'Admin' => 'ROLE_ADMIN',
-                        'User' => 'ROLE_USER'
+                        'Administrateur' => 'ROLE_ADMIN',
+                        'Client' => 'ROLE_USER',
+                        'Stagiaire' => 'ROLE_INTERN'
                     ]
                 ]
             ])
@@ -35,24 +36,13 @@ class RegistrationType extends AbstractType
             ->add('confirmPassword', PasswordType::class)
             ->add('lastName', TextType::class)
             ->add('firstName', TextType::class)
-            ->add('phone', TelType::class, [
-                'help' => 'Entrez le numéro de téléphone sans espaces'
-            ])
+            ->add('phone', TelType::class)
             ->add('createdBy', ChoiceType::class, [
                 'choices' => [
                 'Aude' => 'Aude',
                 'Emilie' => 'Emilie'
                 ]
                 ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Le client accepte d\'enregistrer son numéro de téléphone',
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Le client doit accepter que son numéro de téléphone soit enregistré',
-                    ]),
-                ],
-            ])
         ;
     }
 

@@ -3,7 +3,245 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
+{# Début section en tête avec la photo #}
+    <section class="banner fluid">
+        {# <img src="/photos/salon_20.jpg" alt="photo du salon de coiffure" class="img-fluid"> #}
+        <div class="container mx-auto">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-banner">
+                            <h1>Notre Style Pour Vous</h1>
+                            <p>Coiffure Homme &amp; Femme</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{# FIN de l'en tête #}
 
-    <h1>Page d'accueil du site</h1>
-    
+{# Début de la section équipe #}
+    <section class="team">
+        <div class="container mx-auto">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="team-title d-flex justify-content-center">
+                        <h2>Notre &Eacute;quipe</h2>
+                    </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6 col-sm-12">
+                                <div class="team-box">
+                                    <figure>
+                                        <img src="/photos/emilie.jpg" alt="coiffeuse Emilie" class="img-fluid">
+                                    </figure>
+                                    <div class="team-info">
+                                        <p>Coiffeuse visagiste</p>
+                                        <h3 class="text-nowrap">&Eacute;milie Schoenecker</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6 col-sm-12">
+                                <div class="team-box">
+                                    <figure>
+                                        <img src="/photos/aude.jpg" alt="coiffeuse Aude Schmit" class="img-fluid">
+                                    </figure>
+                                    <div class="team-info">
+                                        <p>Coiffeuse visagiste</p>
+                                        <h3>Aude Schmit</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{# FIN de la section équipe #}
+
+{# Début section horaire d'ouverture du magasin #} {# VOIR LE RESPONSIVE SUR ECRAN DE TELEPHONE #} 
+    <section class="time">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="time-title">
+                        <h2>Nos horaires d'ouverture</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-2 time-general">
+                    <div class="time-box m-auto">
+                        <h4>Lundi</h4>
+                        <p>09h00 - 18h00</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-2 time-general">
+                    <div class="time-box m-auto">
+                        <h4>Mardi</h4>
+                        <p>09h00 - 18h00</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-2 time-general">
+                    <div class="time-box m-auto">
+                        <h4>Mercredi</h4>
+                        <p>FERM&Eacute;</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-2 time-general">
+                    <div class="time-box m-auto">
+                        <h4>Jeudi</h4>
+                        <p>09h00 - 18h00</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-2 time-general">
+                    <div class="time-box m-auto">
+                        <h4>Vendredi</h4>
+                        <p>09h00 - 18h00</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-2 time-general">
+                    <div class="time-box m-auto">
+                        <h4>Samedi</h4>
+                        <p>09h00 - 18h00</p>
+                    </div>
+                </div>
+            </div>       
+        </div>    
+    </section>
+{# FIN section horaires dd'ouverture #}
+
+{# Début section créations #} {# VOIR LE RESPONSIVE SUR ECRAN DE TELEPHONE #}
+    <section class="work">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="work-title">
+                        <h2>Nos cr&Eacute;ations</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client2.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client3.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client5.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client6.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client7.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client8.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-box">
+                        <figure>
+                            <img src="/photos/client9.jpg" alt="" class="img-fluid">
+                        </figure>
+                    </div>                
+                </div>
+            </div>
+        </div>    
+    </section>
+{# FIN section créations #}
+
+{# Début section tarrif #}
+    <section class="price">
+        <div class="container">
+            <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="price-title">
+                            <h2>Nos pr&Eacute;stations</h2>
+                        </div>
+                    </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="price-image">
+                        <img src="/photos/barbe2.jpg" alt="fauteuil de barbier" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="price-list">
+						<div class="price-item">Coupe Homme</div>
+						<div class="price-amount">25 €</div>
+					</div>
+                    <div class="price-list">
+						<div class="price-item">Coupe Femme + brushing</div>
+						<div class="price-amount">40 €</div>
+					</div>
+                    <div class="price-list">
+						<div class="price-item">Coupe Femme + couleurs</div>
+						<div class="price-amount">40 €</div>
+					</div>
+                    <div class="price-list">
+						<div class="price-item">Coupe Femme + mèches</div>
+						<div class="price-amount">70 €</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </section>
+{# FIN section tarrif #}
+
+{# Début section carte #}
+    <section class="map">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map-title">
+                    <h2>Nous trouver</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map-google mb-5">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8781.940128526277!2d6.145206881391134!3d49.12679221430357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4794d95754a10aeb%3A0xb890bc8bc4e031f7!2sNotre%20Style%20Pour%20Vous!5e0!3m2!1sfr!2sfr!4v1600778240354!5m2!1sfr!2sfr" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>   
+    </div>
+    </section>
+{# FIN section carte #}
+{% block footer %}
+    {% include 'footer.html.twig'%}
+{% endblock %}
+
 {% endblock %}

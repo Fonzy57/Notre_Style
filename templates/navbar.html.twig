@@ -28,20 +28,23 @@
             
         </ul>
         {% if not app.user %}
-            <a href="{{ path('app_login') }}" class="btn btn-info">Se Connecter</a>
+            <a href="{{ path('app_login') }}" class="btn btn-gold"><strong>Se Connecter</strong></a>
         {% else %}
-            <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Prendre un rendez-vous</a>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Prendre un rendez-vous</a>
+            {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
-                <div class="dropdown">
-                    <a class="btn btn-info dropdown-toggle my-2 my-sm-0 mr-sm-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ajouter
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ path('inscription') }}">Un Utilisateur</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('services_new') }}">Un Service</a>
+                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Ajouter un rendez-vous</a>
+                    <div class="dropdown">
+                        <a class="btn btn-info dropdown-toggle my-2 my-sm-0 mr-sm-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ajouter
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('inscription') }}">Un Utilisateur</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path('services_new') }}">Un Service</a>
+                        </div>
                     </div>
-                </div>
             {% endif %}
             <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
         {% endif %}

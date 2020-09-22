@@ -1,0 +1,27 @@
+<footer class="footer">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="footer-menu col-md-12">
+                    <ul>
+                        <li>
+                            <a href="{{ path('home') }}">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="#">Nous contacter</a>
+                        </li>
+                        {% if app.user %}
+                            <li>
+                                <a href="{{ path('profil') }}">Votre Profil</a>
+                            </li>
+                    {% endif %}
+                    </ul>
+                </div>
+                    <div class="container-fluid text-center pt-1 col-md-12">
+                        NOTRE STYLE POUR VOUS - <i class="fa fa-map-marker" aria-hidden="true"></i> 15 RUE DE LA MARNE 57050 LE BAN-SAINT-MARTIN - <i class="fa fa-phone" aria-hidden="true"></i> 03 87 30 59 54  - N° SIREN 510 466 121 - N° SIRET 51046612100017
+                    </div>
+                    <div class="container-fluid text-center pt-1 col-md-12">
+                        Site créé par Stéphane SCHEERES - <i class="fa fa-copyright" aria-hidden="true"></i> Tous droits réservés
+                    </div>
+            </div>
+        </div>
+</footer>

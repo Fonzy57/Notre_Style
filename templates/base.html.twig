@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
         <link rel="shortcut icon" type="image/png" href="logo_icon.png">
         <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/icons/css/font-awesome.min.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -13,13 +14,7 @@
             {% include 'navbar.html.twig'%}
         {% endblock %}
 
-    <div class="container">    
         {% block body %}{% endblock %}
-    </div>
-    
-        {% block footer %}
-            {% include 'footer.html.twig'%}
-        {% endblock %}
         
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

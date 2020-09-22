@@ -38,7 +38,7 @@ security:
         - { path: ^/inscription, roles: ROLE_ADMIN }
         - { path: ^/rdv/nouveau, roles: IS_AUTHENTICATED_FULLY}
         - { path: ^/profil, roles: IS_AUTHENTICATED_FULLY}
-        - { path: ^/rdv, roles: ROLE_ADMIN }
+        - { path: ^/rdv, roles: ROLE_ADMIN}
         - { path: ^/utilisateurs, roles: ROLE_ADMIN }
         - { path: ^/services, roles: ROLE_ADMIN }
         # - { path: ^/admin, roles: ROLE_ADMIN }

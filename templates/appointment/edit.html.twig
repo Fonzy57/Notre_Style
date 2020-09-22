@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Modifier un rendez-vous</h1>
 
-    {{ include('appointment/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('appointment/_form.html.twig', {'button_label': 'Modifier le rdv'}) }}
 
-    <a href="{{ path('appointment_index') }}">Retour à la liste</a>
+    <a class="btn btn-primary mt-2" href="{{ path('appointment_index') }}">Retour à la liste</a>
 
     {{ include('appointment/_delete_form.html.twig') }}
 {% endblock %}

@@ -53,9 +53,9 @@ class AppointmentController extends AbstractController
             $appointment->setCreatedAt(new \DateTime())
                         ->setCreatedBy($user->getLastName())
                         ->setUpdatedAt(new \DateTime())
-                        ->setUpdatedBy($user->getLastName());
-                        //->setEndAt($end);
-            dump($start, $end, $appointment);
+                        ->setUpdatedBy($user->getLastName())
+                        ->setEndAt($end);
+            dump($start, $duration, $end, $appointment);
 
             /* $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($appointment);

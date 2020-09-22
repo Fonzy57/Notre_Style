@@ -21,6 +21,7 @@ class User implements UserInterface
 {
     const ROLE_ADMIN = 'ROLE_ADMIN';
     const ROLE_USER = 'ROLE_USER';
+    const ROLE_INTERN = 'ROLE_INTERN';
     const DEFAULT_ROLES = [self::ROLE_USER];
 
     /**
@@ -86,8 +87,9 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(min = 10,
-     *  max = 10,
-     *  exactMessage="Le numéro de téléphone doit contenir 10 chiffres, sans espaces"
+     *  max = 20,
+     *  minMessage="Le numéro de téléphone doit contenir 10 chiffres au minimum",
+     *  maxMessage="Le numéro de téléphone ne peut contenir plus de 20 caractères !"
      * )
      */
     private $phone;
