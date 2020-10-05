@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-xl navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ path('home') }}">Notre Style</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,9 +34,9 @@
                 <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Prendre un rendez-vous</a>
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Ajouter un rendez-vous</a>
+                <a href="{{ path('appointment_new') }}" class="btn btn-gold my-2 my-sm-0 mr-sm-2">Ajouter un rendez-vous</a>
                     <div class="dropdown">
-                        <a class="btn btn-info dropdown-toggle my-2 my-sm-0 mr-sm-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-gold dropdown-toggle my-2 my-sm-0 mr-sm-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Ajouter
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
             {% endif %}
-            <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-outline-warning">Déconnexion</a>
         {% endif %}
     </div>
 </nav>

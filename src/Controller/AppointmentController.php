@@ -38,14 +38,13 @@ class AppointmentController extends AbstractController
         //Réglage de la date du formulaire pour être à la date du jour 
         $appointment->setBeginAt(new \DateTime());
 
-        //Il faut que le user soit celui connecté et quand role Admin avoir la liste des clients
-
         $form = $this->createForm(AppointmentType::class, $appointment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $start = $appointment->getBeginAt();
+            $begin = $appointment->getBeginAt();
+            $start = clone $begin;
             $duration = $appointment->getServices()->getDuration();
             $end = $start->add(new DateInterval('PT'.$duration.'M'));
 
@@ -55,13 +54,12 @@ class AppointmentController extends AbstractController
                         ->setUpdatedAt(new \DateTime())
                         ->setUpdatedBy($user->getLastName())
                         ->setEndAt($end);
-            dump($start, $duration, $end, $appointment);
 
-            /* $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($appointment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('profil'); */
+            return $this->redirectToRoute('profil');
         }
 
         return $this->render('appointment/new.html.twig', [
