@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Services{% endblock %}
+{% block title %}Service {{ service.denomination }}{% endblock %}
 
 {% block body %}
-    <h1>Services</h1>
+<div class="top">
+
+    <h1>Service {{ service.denomination }}</h1>
 
     <table class="table">
         <tbody>
@@ -38,9 +40,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('services_index') }}">back to list</a>
+    <a href="{{ path('services_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('services_edit', {'id': service.id}) }}">edit</a>
+    <a href="{{ path('services_edit', {'id': service.id}) }}">Modifier</a>
 
     {{ include('services/_delete_form.html.twig') }}
+</div>
 {% endblock %}

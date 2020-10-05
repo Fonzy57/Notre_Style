@@ -3,9 +3,12 @@
 {% block title %}Enregistrement RDV{% endblock %}
 
 {% block body %}
+<div class="top container">
+
     <h1>Enregistrer un nouveau rendez-vous</h1>
 
     {{ include('appointment/_form.html.twig') }}
 
-    <a href="{{ path('appointment_index') }}">Revenir à la liste</a>
+    <a class="mt-5" href="{{ path('appointment_index') }}">Revenir à la liste</a>
+</div>
 {% endblock %}

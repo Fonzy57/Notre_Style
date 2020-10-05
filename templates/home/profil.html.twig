@@ -4,11 +4,9 @@
 
 {% block body %}
 <div class="container top">
-    <h1>Hello {{ user.lastName }} {{ user.firstName }}</h1>
+    <h1>Bonjour {{ user.lastName }} {{ user.firstName }}</h1>
 
-    <p>Vous avez un {{ user.roles[0] }}</p>
-
-    <h3>Les différentes infos sur vous :</h3>
+    <h3>Vous trouverez ici vos différentes informations</h3>
     <p>Nom : {{ user.lastName }}</p>
     <p>Prénom : {{ user.firstName }}</p>
     <p>Téléphone : {{ user.phone }}</p>

@@ -3,11 +3,17 @@
 {% block title %}Modification rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Modifier un rendez-vous</h1>
+<div class="top container">
+
+    <h1>Modifier le rendez-vous</h1>
+
+    <h2>prévu le {{ appointment.beginAt|date('d-m-Y H:i') }}</h2>
 
     {{ include('appointment/_form.html.twig', {'button_label': 'Modifier le rdv'}) }}
 
-    <a class="btn btn-primary mt-2" href="{{ path('appointment_index') }}">Retour à la liste</a>
-
     {{ include('appointment/_delete_form.html.twig') }}
+    <br>
+    <a class="mt-2" href="{{ path('appointment_index') }}">Retour à la liste</a>
+
+</div>
 {% endblock %}
