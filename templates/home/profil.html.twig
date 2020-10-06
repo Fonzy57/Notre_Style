@@ -5,11 +5,15 @@
 {% block body %}
 <div class="container top">
     <h1>Bonjour {{ user.lastName }} {{ user.firstName }}</h1>
-
+<br>
+<br>
     <h3>Vous trouverez ici vos différentes informations</h3>
+    <br>
     <p>Nom : {{ user.lastName }}</p>
     <p>Prénom : {{ user.firstName }}</p>
     <p>Téléphone : {{ user.phone }}</p>
     <p>Email : {{ user.email }}</p>
 </div>
+
+
 {% endblock %}

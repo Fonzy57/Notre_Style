@@ -31,12 +31,12 @@
             <a href="{{ path('app_login') }}" class="btn btn-gold"><strong>Se Connecter</strong></a>
         {% else %}
             {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Prendre un rendez-vous</a>
+                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2 mb-md-2">Prendre un rendez-vous</a>
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2">Ajouter un rendez-vous</a>
+                <a href="{{ path('appointment_new') }}" class="btn btn-secondary my-2 my-sm-0 mr-sm-2 mb-md-2">Ajouter un rendez-vous</a>
                     <div class="dropdown">
-                        <a class="btn btn-gold dropdown-toggle my-2 my-sm-0 mr-sm-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-gold dropdown-toggle my-2 my-sm-0 mr-sm-2 mb-md-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Ajouter
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
             {% endif %}
-            <a href="{{ path('app_logout') }}" class="btn btn-outline-warning">Déconnexion</a>
+            <a href="{{ path('app_logout') }}" class="btn btn-outline-warning mb-md-2">Déconnexion</a>
         {% endif %}
     </div>
 </nav>

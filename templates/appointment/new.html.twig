@@ -8,7 +8,9 @@
     <h1>Enregistrer un nouveau rendez-vous</h1>
 
     {{ include('appointment/_form.html.twig') }}
-
-    <a class="mt-5" href="{{ path('appointment_index') }}">Revenir à la liste</a>
+<br>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="mt-5" href="{{ path('appointment_index') }}">Revenir à la liste</a>
+    {% endif %}
 </div>
 {% endblock %}
